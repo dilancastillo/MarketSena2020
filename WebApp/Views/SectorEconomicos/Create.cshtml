@@ -1,0 +1,44 @@
+﻿@model MarketSENA.Models.SectorEconomico
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "";
+}
+
+<partial name="_NavbarPartial" />
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image_SEconomico"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="login-heading mb-4">Registrar Sector Económico</h3>
+                            <form asp-controller="SectorEconomicos" asp-action="Create" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group-select">
+                                    <label asp-for="CiiuSeccionID"></label>
+                                    <select asp-for="CiiuSeccionID" asp-items="ViewBag.CiiuSeccionID" class="form-control"></select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Siguiente" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" />
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" asp-action="Index">Back to List</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<partial name="_FooterPartial" />

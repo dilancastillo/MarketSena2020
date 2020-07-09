@@ -1,0 +1,293 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    /* About */
+    .section-heading h4 {
+        text-transform: uppercase;
+        color: #101D2C;
+        line-height: 0;
+        font-family: 'Teko', sans-serif;
+        font-weight: 300;
+        letter-spacing: 1px;
+    }
+
+    .section-heading h1 {
+        font-family: 'Niconne', cursive;
+        color: #99CC66;
+    }
+
+    .about .btn {
+        width: 150px;
+        color: #99CC66 !important;
+        transition: background-color 650ms;
+    }
+
+        .about .btn:hover {
+            color: #fff !important;
+            background-color: #99CC66;
+        }
+
+    /* Menu */
+    .menu {
+        background-color: #101D2C;
+    }
+
+    .shop-info i {
+        color: #99CC66;
+        font-size: 50px;
+    }
+
+    .shop-info h1 {
+        font-family: 'Teko', sans-serif;
+        font-size: 25px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    .shop-info p,
+    .shop-info address {
+        color: rgba(255, 255, 255, .5);
+    }
+
+    hr {
+        border-top: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .point-right,
+    .point-left {
+        position: relative;
+        background-color: #fff;
+        display: flex;
+    }
+
+        .point-left::before,
+        .point-right::before {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: inherit;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            z-index: 1;
+        }
+
+    .menu-item-desc {
+        padding: 50px 10px;
+        color: #212529;
+        margin: auto;
+    }
+
+        .menu-item-desc h6 {
+            color: #99CC66;
+            font-size: 20px;
+        }
+
+        .menu-item-desc h1 {
+            color: #101D2C;
+            font-size: 30px;
+            letter-spacing: 1px;
+            font-family: 'Teko', sans-serif;
+            font-weight: 300;
+        }
+
+    /* Product section */
+    .card-body h1 {
+        font-size: 25px;
+        letter-spacing: 1px;
+        font-family: 'Teko', sans-serif;
+        font-weight: 300;
+    }
+    .card-body h6 {
+        font-size: 16px;
+        color: #99CC66;
+    }
+</style>
+
+<main>
+    <section class="about" id="about">
+        <div class="container">
+            <div class="row align-items-lg-center">
+                <div class="col-12 col-md-6 text-center text-md-left" data-aos="fade-right">
+                    <div class="section-heading mb-3">
+                        <h4>Acerca de Market SENA</h4>
+                        <h1 class="display-4">Objetivo</h1>
+                    </div>
+                    <p>Generación de una solución tecnológica para la comercialización, la comunicación y  el reconocimiento  en la WEB, de las mipymes del sector industrial y de servicios de Boyacá</p>
+                    <a class="btn mt-4 mb-5 mb-md-0" asp-controller="Home" asp-action="Pdf">Saber más</a>
+                </div>
+                <div class="col-12 col-md-6" data-aos="fade-left">
+                    <img class="img-fluid" src="~/img/section2.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="row text-center text-white">
+                <div class="col-12 col-md-4 mb-4 mb-md-0" data-aos="fade-up">
+                    <div class="shop-info">
+                        <i class="far fa-clock mb-3"></i>
+                        <h1 class="mb-4">Horario de atención</h1>
+                        <p>Lunes a Viernes: 8:00am - 5:00pm</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4 mb-md-0" data-aos="fade-down">
+                    <div class="shop-info">
+                        <i class="fas fa-map-marked-alt mb-3"></i>
+                        <h1 class="mb-4">Nuestra ubicación</h1>
+                        <address>
+                            Carrera 9 No. 28-34, Barrio Maldonado <br />
+                            Tunja, Boyacá, Colombia
+                        </address>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4 mb-md-0" data-aos="fade-right">
+                    <div class="shop-info">
+                        <i class="fas fa-mobile-alt mb-3"></i>
+                        <h1 class="mb-4">Contáctenos</h1>
+                        <p>Teléfono: +57 82 159</p>
+                        <p>Email: sennovatunja@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5" />
+        </div>
+
+        <div class="container-fluid p-0">
+            <div class="section-heading my-5 text-center">
+                <h4 class="text-white">Nuestros servicios</h4>
+                <h1 class="display-4">Directorio</h1>
+            </div>
+
+            <!-- Row #1 -->
+            <div class="row no-gutters">
+                <!-- Column #1 -->
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-1 order-xl-1">
+                    <img class="img-fluid" src="~/img/section3.jpg" alt="" />
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-2 order-xl-2 point-left" data-aos="fade-in">
+                    <div class="menu-item-desc">
+                        <h6></h6>
+                        <h1>Pasarela de pago</h1>
+                        <p>Pagos en línea permitiendo a las personas o comercios realizar pagos@*, cobros y recargas de una manera fácil y segura*@</p>
+                        <a href="https://epayco.co/nosotros.php" class="btn mt-3 d-none d-xl-block">Ver más</a>
+                    </div>
+                </div>
+                <!-- Column #2 -->
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-4 order-xl-3">
+                    <img class="img-fluid" src="~/img/recursoshumanos.jpg" alt="" />
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-3 order-xl-4 point-left">
+                    <div class="menu-item-desc">
+                        <h6></h6>
+                        <h1>Controlar pagos</h1>
+                        <p>Pagos en línea permitiendo a las personas o comercios realizar pagos@*, cobros y recargas de una manera fácil y segura*@</p>
+                        <a href="https://epayco.co/medios_de_pago_epayco.php" class="btn mt-3 d-none d-xl-block">Ver más</a>
+                    </div>
+                </div>
+                <!-- Column #3 -->
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-5 order-xl-5">
+                    <img class="img-fluid" src="~/img/industria.jpg" alt="" />
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-6 order-xl-6 point-left">
+                    <div class="menu-item-desc">
+                        <h6></h6>
+                        <h1>Marco de creación de sitios web</h1>
+                        <p>Pagos en línea permitiendo a las personas o comercios realizar pagos@*, cobros y recargas de una manera fácil y segura*@</p>
+                        <a href="https://grapesjs.com/" class="btn mt-3 d-none d-xl-block">Ver más</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Row #2 -->
+            <div class="row no-gutters">
+                <!-- Column #4 -->
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-2 order-xl-2">
+                    <img class="img-fluid" src="~/img/section3.jpg" alt="" />
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-1 order-xl-1 point-right">
+                    <div class="menu-item-desc">
+                        <h6></h6>
+                        <h1>Crear plantillas sin conocimiento de codificación</h1>
+                        <p>Pagos en línea permitiendo a las personas o comercios realizar pagos@*, cobros y recargas de una manera fácil y segura*@</p>
+                        <a href="" class="btn mt-3 d-none d-xl-block">Ver más</a>
+                    </div>
+                </div>
+                <!-- Column #5 -->
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-3 order-xl-4">
+                    <img class="img-fluid" src="~/img/recursoshumanos.jpg" alt="" />
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-5 order-xl-3 point-right">
+                    <div class="menu-item-desc">
+                        <h6></h6>
+                        <h1>Recibir recaudos</h1>
+                        <p>Pagos en línea permitiendo a las personas o comercios realizar pagos@*, cobros y recargas de una manera fácil y segura*@</p>
+                        <a href="" class="btn mt-3 d-none d-xl-block">Ver más</a>
+                    </div>
+                </div>
+                <!-- Column #6 -->
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-6 order-xl-6">
+                    <img class="img-fluid" src="~/img/industria.jpg" alt="" />
+                </div>
+                <div class="col-12 col-sm-6 col-xl-2 order-sm-5 order-xl-5 point-right">
+                    <div class="menu-item-desc">
+                        <h6></h6>
+                        <h1>Múltiples medios de pagos en línea</h1>
+                        <p>Pagos en línea permitiendo a las personas o comercios realizar pagos@*, cobros y recargas de una manera fácil y segura*@</p>
+                        <a href="" class="btn mt-3 d-none d-xl-block">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="producto" id="producto">
+        <div class="container">
+            <div class="section-heading my-5 text-center">
+                <h4>Nuestro portafolio</h4>
+                <h1 class="display-4">Nuestras plantillas</h1>
+            </div>
+            <div class="row text-center">
+                <div class="col-12 col-md-4" data-aos="fade-right">
+                    <img class="img-fluid" src="~/img/3394.jpg" alt="" />
+                    <div class="card-body">
+                        <h1>Restaurante</h1>
+                        
+                        <p>Esta es la plantilla de restaurante!</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4" data-aos="fade-up">
+                    <img class="img-fluid" src="~/img/industria.jpg" alt="" />
+                    <div class="card-body">
+                        <h1>Industria</h1>
+                        
+                        <p>Esta es la plantilla de industriales!</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4" data-aos="fade-left">
+                    <img class="img-fluid" src="~/img/anuncio.jpeg" alt="" />
+                    <div class="card-body">
+                        <h1>Publicidad</h1>
+                        
+                        <p>Esta es la plantilla de publicidad!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    $(function () {
+            
+            AOS.init({
+                easing: 'ease',
+                duration: 1000,
+            });
+        });
+</script>
+

@@ -1,0 +1,514 @@
+﻿@model IEnumerable<MarketSENA.Models.Plantilla>
+
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = "";
+
+}
+
+<style>
+    .titulo {
+        margin-top: 150px;
+    }
+
+    .card-img-top {
+        height: 250px;
+    }
+
+    footer {
+        background-color: #101D2C;
+        color: rgba(255, 255, 255, .5);
+    }
+</style>
+
+<partial name="_NavbarPartial" />
+
+<section class="titulo mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">Modelos de Negocio Digital</h1>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!-- Card deck -->
+                <div class="card-deck">
+
+
+
+                    <!-- Central Modal Medium Info -->
+                    <div class="modal fade left" id="sideModalTLInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-info modal-side modal-top-left" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                                <!--Header-->
+                                <div class="modal-header">
+                                    <p class="heading lead">Plantillas de Corretaje</p>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">&times;</span>
+                                    </button>
+                                </div>
+
+                                <!--Body-->
+                                <div class="modal-body">
+
+                                    <img src="~/img/carousel2.jpg" alt=""
+                                         class="img-fluid">
+
+                                    <div class="text-center">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
+                                    </div>
+                                </div>
+
+                                <!--Footer-->
+                                <div class="modal-footer justify-content-center">
+                                    <a asp-action="Corretaje" type="button" class="btn btn-info">Consiguela ahora</a>
+                                    <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No, gracias</a>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!-- Central Modal Medium Info-->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/corretaje.jpg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Corretaje</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#sideModalTLInfo" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                    <!-- Central Modal Medium Info -->
+                    <div class="modal fade left" id="PublicidadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-info modal-side modal-top-left" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                                <!--Header-->
+                                <div class="modal-header">
+                                    <p class="heading lead">Plantillas de Publicidad</p>
+
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">&times;</span>
+                                    </button>
+                                </div>
+
+                                <!--Body-->
+                                <div class="modal-body">
+
+                                    <img src="~/img/anuncio.jpeg" alt=""
+                                         class="img-fluid">
+
+                                    <div class="text-center">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
+                                    </div>
+                                </div>
+
+                                <!--Footer-->
+                                <div class="modal-footer justify-content-center">
+                                    <a asp-action="Publicitario" type="button" class="btn btn-info">Consiguela ahora</a>
+                                    <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No, gracias</a>
+                                </div>
+                            </div>
+                            <!--/.Content-->
+                        </div>
+                    </div>
+                    <!-- Central Modal Medium Info-->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/anuncio.jpeg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Publicitario</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#PublicidadModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/infomediario.jpg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Infomediario</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#ModalInfomediario" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Card deck -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <!-- Card deck -->
+                <div class="card-deck">
+
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/mercantil.jpg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Mercantil</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#MyModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                    <!-- Modal -->
+                    <div class="modal fade right" id="RightModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-full-height modal-right" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalPreviewLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h3 class="text-center">Vestir y calzado</h3>
+                                    <img src="~/img/ropa2.jpg" alt=""
+                                         class="img-fluid">
+
+                                    <div class="text-center">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
+                                    </div>
+                                    <a asp-action="Ropa" type="button" class="btn btn-info">Consiguela ahora</a>
+                                </div>
+
+                                <div class="modal-body text-center">
+                                    <h3 class="text-center">Industrial</h3>
+                                    <img src="~/img/industria.jpg" alt=""
+                                         class="img-fluid">
+
+                                    <div class="text-center">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
+                                    </div>
+                                    <a asp-action="Industrial" type="button" class="btn btn-info">Consiguela ahora</a>
+                                </div>
+
+                                <div class="modal-body text-center">
+                                    <h3 class="text-center">Empacados</h3>
+                                    <img src="~/img/8236.jpg" alt=""
+                                         class="img-fluid">
+
+                                    <div class="text-center">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
+                                    </div>
+                                    <a asp-action="Empacados" type="button" class="btn btn-info">Consiguela ahora</a>
+                                </div>
+
+                                <div class="modal-body text-center">
+                                    <h3 class="text-center">Restaurante</h3>
+                                    <img src="~/img/3394.jpg" alt=""
+                                         class="img-fluid">
+
+                                    <div class="text-center">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero illo error eveniet cum.</p>
+                                    </div>
+                                    <a asp-action="Restaurante" type="button" class="btn btn-info">Consiguela ahora</a>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/fabricante directo.jpg"
+                                 alt="Card image cap">
+                            <a asp-action="">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Fabricante directo</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#RightModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/afiliacion.png"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Afiliados</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#MyModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Card deck -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <!-- Card deck -->
+                <div class="card-deck">
+
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/comunidad.jpg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Comunidad</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#MyModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/suscripcion.jpg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Suscripción</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#MyModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+                    <!-- Card -->
+                    <div class="card mb-4">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img class="card-img-top" src="~/img/utilidad.jpg"
+                                 alt="Card image cap">
+                            <a href="#!">
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+
+                            <!--Title-->
+                            <h4 class="card-title">Utilidad</h4>
+                            <!--Text-->
+                            <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the card's
+                                content.
+                            </p>
+                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                            <a asp-action="" data-toggle="modal" data-target="#MyModal" class="btn btn-light-blue btn-md">Ver más</a>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Card deck -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<partial name="_FooterPartial" />
+
+
+@*<h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ModeloNegocio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Visible)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModeloNegocio.ModeloNegocioID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visible)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PlantillaID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PlantillaID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PlantillaID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@

@@ -1,0 +1,50 @@
+﻿@model MarketSENA.Models.ModeloNegocio
+
+@{
+    ViewData["Title"] = "Crear Modelo de Negocio";
+    Layout = "";
+}
+
+<partial name="_NavbarPartial" />
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image_ModeloNegocio"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h3 class="login-heading mb-4">Crear Modelo de Negocio</h3>
+                            <form accept-charset="" asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group-label">
+                                    <input asp-for="Nombre" type="text" class="form-control" placeholder="Nombre">
+                                    <label asp-for="Nombre">Nombre</label>
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group-label">
+                                    <input asp-for="Descripcion" type="text" class="form-control" placeholder="Descripción">
+                                    <label asp-for="Descripcion">Descripción</label>
+                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                </div>
+
+                                <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Siguiente</button>
+                                <div class="text-center">
+                                    <a class="small" asp-action="Index">Back to List</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_FooterPartial" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

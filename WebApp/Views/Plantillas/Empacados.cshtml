@@ -1,0 +1,927 @@
+﻿@model IEnumerable<MarketSENA.Models.Plantilla>
+
+@{
+    Layout = "";
+    ViewData["Title"] = "Empacados";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>ShowCase Grapes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link rel="stylesheet" type="text/css" href="~/showcase-grapes/assets/css/bamburgh.min.css">
+    <link href="https://unpkg.com/grapesjs@0.15.5/dist/css/grapes.min.css" rel="stylesheet">
+    <link href="~/showcase-grapes/assets/css/custom-grapesjs.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/grapesjs@0.15.5/dist/grapes.js"></script>
+    <script src="https://unpkg.com/grapesjs-plugin-export"></script>
+</head>
+
+<body id="app-top" class="sidebar-collapsed">
+
+    <div class="app-wrapper">
+        <div class="app-main">
+
+            <div class="app-content app-content-aside sp-row" id="editor-area">
+
+                <!--panels sidebar-->
+                <div class="app-content--sidebar app-content--sidebar__sm scrollbar-container sp-column"
+                     style="flex-basis: 400px;" id="sidebar-inner-1">
+                    <div class="app-content--sidebar__header py-3 text-center gjs-pn-buttons">
+
+                        <button type="button" class="btn btn-link  device-type" id="desktop-view">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-desktop"></i>
+                                <!--                          Desktop-->D
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn  btn-link device-type" id="tablet-view">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-tablet-alt"></i>
+                                <!--                          Tablet-->T
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn  btn-link device-type" id="mobile-view">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-mobile-alt"></i>
+                                <!--                          Mobile-->M
+                            </span>
+                        </button>
+                    </div>
+                    <div class="app-content--sidebar__header py-3 text-center gjs-pn-buttons">
+                        <button type="button" class="btn btn-link btn-sm" id="editor-undo">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-undo"></i>
+                                Deshacer
+                            </span>
+                        </button>
+
+
+                        <button type="button" class="btn btn-link btn-sm" id="editor-styles">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-sliders-h"></i>
+                                Ajustes
+                            </span>
+                        </button>
+
+
+                        <button type="button" class="btn btn-sm btn-link" id="editor-redo">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-repeat"></i>
+                                Rehacer
+                            </span>
+                        </button>
+                    </div>
+                    <!--                <div class="app-content&#45;&#45;sidebar__content scrollbar-container ps ps&#45;&#45;active-y">-->
+                    <div class="app-content--sidebar__content ">
+                        <ul class="nav nav-pills nav-pills-hover flex-column mt-4">
+                            <li class="nav-header">
+                                <i class="fas fa-cogs"></i>
+                                Ajustes
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="sw-visibility" href="#">
+                                    <i class="far fa-square"></i>
+                                    Bordes
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="editor-fullscreen" href="#">
+                                    <i class="fas fa-expand-arrows-alt"></i>
+                                    Pantalla completa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="modal" id="export" data-target="#editor-export" href="#">
+                                    <i class="fas fa-code"></i>
+                                    Exportar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="modal" id="import" data-target="#editor-import" href="#">
+                                    <i class="fas fa-download"></i>
+                                    Importar
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="canvas-clear" href="#">
+                                    <i class="fas fa-trash"></i>
+                                    Lienzo claro
+                                </a>
+                            </li>
+                        </ul>
+                        <!--layers old position!-->
+                        <!--                    <div class="nav-header">-->
+                        <!--                        <i class="fas fa-bars"></i>-->
+                        <!--                        <span>Layers</span>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="py-2 layers-container"></div>-->
+
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; height: 396px; right: 0px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 322px;"></div>
+                        </div>
+                    </div>
+                    <div class="app-content--sidebar__content">
+                        <button type="button" class="btn btn-block btn-success btn-sm" id="editor-add">
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-plus"></i>
+                                Añadir
+                            </span>
+                        </button>
+                        <button type="button" class="btn btn-block btn-info btn-sm" id="editor-preview">
+                            <span class="btn-wrapper--icon">
+                                <i class="far fa-eye"></i>
+                                Avance
+                            </span>
+                        </button>
+                        <a href="https://devfuture.pro" class="btn btn-block btn-primary btn-sm" target="_blank">
+                            <i class="far fa-support"></i>
+                            Apoyo
+                        </a>
+                    </div>
+                    <!--Pages-->
+                    <ul class="list-group app-content--sidebar__footer" id="pages-mgr">
+                        <li id="page0" style="cursor: pointer" class="list-group-item d-flex justify-content-between align-items-center gjs-page-item">
+                            <span class="gjs-page-title">Página 1</span>
+                            <button style="width:28px;height:28px;" type="button"
+                                    class="gjs-page-add btn btn-sm btn-primary align-middle text-center px-0 ">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button style="width:28px;height:28px" type="button"
+                                    class="gjs-page-remove btn btn-sm btn-primary text-center px-0  align-middle">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <!--                            <span class="badge badge-primary badge-pill">P</span>-->
+                        </li>
+                        <!--                        <li class="list-group-item d-flex justify-content-between align-items-center">-->
+                        <!--                            Dapibus ac facilisis in-->
+                        <!--                            <span class="badge badge-primary badge-pill">2</span>-->
+                        <!--                        </li>-->
+                        <!--                        <li class="list-group-item d-flex justify-content-between align-items-center">-->
+                        <!--                            Morbi leo risus-->
+                        <!--                            <span class="badge badge-primary badge-pill">1</span>-->
+                        <!--                        </li>-->
+                    </ul>
+                </div>
+
+                <!--blocks-->
+                <div class="app-content--sidebar" id="sidebar-inner-2">
+                    <div class="app-content--sidebar__content scrollbar-container" id="blocks-mgr">
+
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <button type="button" class="btn btn-block btn-dark btn-sm" id='editor-close-bm'>
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-times"></i>
+                                Cerrar
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- traits & styles sidebar-->
+                <div class="app-content--sidebar" id="sidebar-inner-3">
+                    <div class="app-content--sidebar__content scrollbar-container" id="styles-or-traits-mgr">
+                        <div id="traits-mgr">
+
+                        </div>
+                        <div id="styles-mgr">
+
+                        </div>
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <button type="button" class="btn btn-block btn-dark btn-sm" id='editor-close-stmgr'>
+                            <span class="btn-wrapper--icon">
+                                <i class="fas fa-times"></i>
+                                Cerrar
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!--FIXME gjs default-->
+                <!--        <div id="gjs" style="height:0px; overflow:hidden">-->
+                <!--                <div style="margin:100px 100px 25px; padding:25px; font:caption">-->
+                <!--                    This is a demo content from _index.html. You can use this template file for-->
+                <!--                    development purpose. It won't be stored in your git repository-->
+                <!--                </div>-->
+                <!--        </div>-->
+
+                <div id="gjs" class="sp-column editor-clm">
+
+                    <style>
+                        @@font-face{
+    font-family: caviar;
+    src: url(../fonts/CaviarDreams.ttf);
+}
+/* social icons */
+.mobamuits_social_list li {
+    display: inline-block;
+}
+
+.mobamuits_social_list li {
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0 3px;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.mobamuits_social_list li a span {
+    color: #fff;
+    line-height: 34px;
+}
+.w3_mobamu_dribble{
+    background: gray;
+}
+.w3_mobamu_facebook{
+    background: gray;
+}
+.w3_mobamu_google{
+    background: gray;
+}
+.w3_mobamu_twitter{
+    background: gray;
+}
+
+.w3_mobamu_facebook:hover {
+    background: #3b5998;
+}
+
+.w3_mobamu_twitter:hover {
+    background: #1da1f2;
+}
+
+.w3_mobamu_dribble:hover {
+    background: #50c55e;
+}
+
+.w3_mobamu_google:hover {
+    background: #F44336;
+}
+
+/*borde navegador*/
+.xx {
+
+    width: auto;
+    height: auto;
+    margin: auto;
+    padding: 5px;
+
+    border-bottom: 1.4px solid;
+
+
+    border-image: linear-gradient(to bottom right, #ffffff 0%, #ffa621 100%);
+
+    border-image-slice: 1;
+  }
+  hr{
+      margin-bottom: 0px !important;
+  }
+.fondo{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.mover{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.mas{
+    background: #ffa621;
+}
+.fon{
+    font-size: 15px;
+}
+
+/* footer */
+footer {
+    background: #122550;
+    position: unset;
+}
+
+h3.footer-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+}
+
+.map-fo iframe {
+    min-height: 200px;
+    border: none;
+}
+.zoom{
+    /* Aumentamos la anchura y altura durante 2 segundos */
+    transition: width 2s, height 2s, transform 2s;
+    -moz-transition: width 2s, height 2s, -moz-transform 2s;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    -o-transition: width 2s, height 2s,-o-transform 2s;
+}
+.zoom:hover{
+    /* tranformamos el elemento al pasar el mouse por encima al doble de
+       su tamaño con scale(2). */
+    transform : scale(1.1);
+    -moz-transform : scale(1.1);      /* Firefox */
+    -webkit-transform : scale(1.1);   /* Chrome - Safari */
+    -o-transform : scale(1.1);        /* Opera */
+}
+
+
+                    </style>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="arriba">
+                                    <img src="~/img/Empacados/logo.png" width="220" height="120" class="d-inline-block align-top " alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class=" d-flex justify-content-end ">
+
+                                    <!-- social icons -->
+                                    <div class="mobamuinfo_social_icons">
+                                        <h2 class="sub-con-fo text-li  text-white"> Redes Social</h2>
+                                        <ul class="mobamuits_social_list list-unstyled">
+                                            <li class="w3_mobamu_facebook">
+                                                <a href="#">
+                                                    <span class="icon-facebook"><i class="fab fa-facebook-f" style="font-size: 15px;"></i></span>
+                                                </a>
+                                            </li>
+                                            <li class="w3_mobamu_twitter">
+                                                <a href="#">
+                                                    <span class="icon-twitter"><i class="fab fa-twitter" style="font-size: 15px;"></i></span>
+                                                </a>
+                                            </li>
+                                            <li class="w3_mobamu_dribble">
+                                                <a href="#">
+                                                    <span class="icon-whatsapp"><i class="fab fa-whatsapp" style="font-size: 19px;"></i></span>
+                                                </a>
+                                            </li>
+                                            <li class="w3_mobamu_google">
+                                                <a href="#">
+                                                    <span class="icon-google-plus"><i class="fab fa-google-plus-g" style="font-size: 15px;"></i></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <hr style="border: 0.4px solid rgb(0, 0, 0);">
+                        <div class="container">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <button class="navbar-toggler mr-4" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" style="background:transparent;" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto w-100 d-flex justify-content-around">
+                                        <li class="nav-item active item-efec text-center  ">
+                                            <div class="xx">
+                                                <a class="nav-link" href="index.html">Inicio</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item active item-efec text-center ">
+                                            <div class="xx">
+                                                <a class="nav-link" href="nosotros.html">Nosotros</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item active item-efec text-center ">
+                                            <div class="xx">
+                                                <a class="nav-link" href="catalogo.html">Catalogo</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item active item-efec text-center ">
+                                            <div class="xx">
+                                                <a class="nav-link" href="contacto.html">Contacto</a>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item active item-efec text-center  mt-2">
+                                            <div class="">
+                                                <img src="~/img/Empacados/107831.png" style="width: 40px; height: 40px;" alt="">
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="fondo">
+                            <img class="img-fluid" src="~/img/Empacados/caja2.jpg" alt="">
+                            <div class="mover text-white">
+                                <h2>Lorem Ipsum</h2>
+                                <p class="fon">
+                                    It is a long established fact that a reader will
+                                    be distracted by the readable content of a
+                                    page w
+                                </p>
+                                <button class="btn text-white mas">Más</button>
+                            </div>
+                        </div>
+
+                        <!-- footer -->
+                        <footer class="py-2 text-white">
+                            <div class="container pt-xl-4">
+                                <div class="row footer-top">
+                                    <div class="col-lg-4 col-md-4 footer-grid_section_1its">
+                                        <h3 class="logo-2 mb-lg-4 mb-3 xx">
+                                            Bogota
+                                        </h3>
+                                        <!-- Map -->
+                                        <div class="map-fo">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.231808078457!2d-73.36373218594076!3d5.532593495988392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7c2d2f63e07b%3A0x7aeb50c1c06285ad!2sPlaza%20de%20Bolivar%2C%20Tunja!5e0!3m2!1sen!2sno!4v1570139434374!5m2!1sen!2sno" frameborder="0" style="border:0;" allowfullscreen="" class="img-fluid"></iframe>
+                                        </div>
+                                        <!-- //Map -->
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 footer-grid_section_1its mt-md-0 mt-4">
+                                        <h3 class=" mb-lg-4 mb-3 xx">Links</h3>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-4">
+                                                <a href="index.html" style="color: white;">Inicio</a>
+                                            </li>
+                                            <li class="mb-4">
+                                                <a href="nosotros.html" style="color: white;">Nosotros</a>
+                                            </li>
+                                            <li class="mb-4">
+                                                <a href="catalogo.html" style="color: white;">Catalogo</a>
+                                            </li>
+                                            <li class="mb-4">
+                                                <a href="contacto.html" style="color: white;">Contacto</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 footer-grid_section_1its mt-lg-0 mt-4">
+                                        <h3 class="mb-lg-4 mb-3 xx">Contactenos</h3>
+                                        <div class="contact-info">
+                                            <div class="footer-style-w3ls mb-4">
+                                                <h4 class="text-li mb-2">Telefono</h4>
+                                                <p>(+57) 304-334-3430</p>
+                                            </div>
+                                            <div class="footer-style-w3ls mb-4">
+                                                <h4 class="text-li mb-2">Email </h4>
+                                                <p><a href="mailto:info@example.com" style="color: white;">diegopedraza888@gmail.com</a></p>
+                                            </div>
+                                            <div class="footer-style-w3ls">
+                                                <h4 class="text-li mb-2">Localizacion</h4>
+                                                <p>Soacha, Boyaca, Colombia</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                <!--layers-->
+                <div class="app-content--sidebar sp-column" style="flex-basis: 400px;" id="sidebar-inner-4">
+                    <div class="app-content--sidebar__content scrollbar-container" id="layers">
+                        <div class="nav-header">
+                            <!--                        <i class="fas fa-bars"></i>-->
+                            <!--                        <span>Layers</span>-->
+                            <span>Zoom to 80% for better experience!</span>
+                        </div>
+
+                        <div class="py-2 layers-container2"></div>
+
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; height: 396px; right: 0px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 322px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--forms designs-->
+                <div class="app-content--sidebar" id="sidebar-forms-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="forms-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--ecommerces designs-->
+                <div class="app-content--sidebar" id="sidebar-ecommerces-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="ecommerces-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--timeline designs-->
+                <div class="app-content--sidebar" id="sidebar-timeline-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="timeline-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--gallery designs-->
+                <div class="app-content--sidebar" id="sidebar-gallery-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="gallery-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--video designs-->
+                <div class="app-content--sidebar" id="sidebar-video-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="video-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--audio designs-->
+                <div class="app-content--sidebar" id="sidebar-audio-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="audio-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--accordion designs-->
+                <div class="app-content--sidebar" id="sidebar-accordion-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="accordion-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--map designs-->
+                <div class="app-content--sidebar" id="sidebar-map-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="map-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--pricing designs-->
+                <div class="app-content--sidebar" id="sidebar-pricing-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="pricing-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--customers designs-->
+                <div class="app-content--sidebar" id="sidebar-customers-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="customers-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--content designs-->
+                <div class="app-content--sidebar" id="sidebar-content-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="content-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--cover designs-->
+                <div class="app-content--sidebar" id="sidebar-cover-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="cover-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--navbar designs-->
+                <div class="app-content--sidebar" id="sidebar-navbar-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="navbar-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+                <!--footer designs-->
+                <div class="app-content--sidebar" id="sidebar-footer-designs">
+                    <div class="app-content--sidebar__content scrollbar-container" id="footer-designs-mgr">
+                        <!--                    <div id="traits-mgr">-->
+                        <!--                    </div>-->
+                        <!--                    <div id="styles-mgr">-->
+                        <!--                    </div>-->
+                    </div>
+                    <div class="app-content--sidebar__footer">
+                        <!--                    <button type="button" class="btn btn-block btn-dark btn-sm" id='forms-designs-close-mgr'>-->
+                        <!--                      <span class="btn-wrapper&#45;&#45;icon">-->
+                        <!--                        <i class="fas fa-times"></i>-->
+                        <!--                        Close-->
+                        <!--                      </span>-->
+                        <!--                    </button>-->
+                    </div>
+                </div>
+
+
+                <!-- Export-modal -->
+                <div class="modal fade" id="editor-export" tabindex="-1" role="dialog" aria-labelledby="modal-b4"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="modal-title-default">
+                                    <i class="fas fa-file-export"></i>
+                                    Exportar
+                                </h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body row">
+                                <div class="col-lg-12">
+                                    <ul class="nav nav-line" id="myTab3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="html-export-tab" data-toggle="tab" href="#html-export"
+                                               role="tab" aria-controls="home" aria-selected="true">
+                                                HTML
+                                                <div class="divider"></div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="css-export-tab" data-toggle="tab" href="#css-export"
+                                               role="tab" aria-controls="profile" aria-selected="false">
+                                                CSS
+                                                <div class="divider"></div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content p-2 pb-0">
+                                        <div class="tab-pane fade" id="html-export" role="tabpanel"
+                                             aria-labelledby="html-export-tab">
+
+                                        </div>
+                                        <div class="tab-pane fade" id="css-export" role="tabpanel"
+                                             aria-labelledby="css-export-tab">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-pill ml-auto" id='gjs-export-zip'>
+                                    <i class="fas fa-file-archive"></i>
+                                    Exportar a ZIP
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- import modal -->
+                <div class="modal fade" id="editor-import" tabindex="-1" role="dialog" aria-labelledby="modal-b4"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="modal-title-default2">
+                                    <i class="fas fa-file-import"></i>
+                                    Importar
+                                </h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body row">
+                                <div class="col-lg-12">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary ml-auto btn-pill" id='import-component'>
+                                    <i class="fas fa-check"></i>
+                                    Importar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/showcase-grapes/assets/vendor/mdb/js/jquery.min.js"></script>
+    <script src="~/showcase-grapes/assets/vendor/mdb/js/popper.min.js"></script>
+    <script src="~/showcase-grapes/assets/vendor/mdb/js/bootstrap.min.js"></script>
+    <script src="~/showcase-grapes/assets/vendor/mdb/js/mdb.min.js"></script>
+    <script src="~/showcase-grapes/assets/js/jquery.dynamiclist.js"></script>
+
+    <!--Bootstrap init-->
+    <!--MetisMenu-->
+
+    <script src="~/showcase-grapes/assets/vendor/metismenu/js/metismenu.min.js"></script>
+
+    <!--MetisMenu init-->
+
+    <script src="~/showcase-grapes/assets/js/demo/metismenu/metismenu.min.js"></script>
+
+    <!--Perfect scrollbar-->
+
+    <script src="~/showcase-grapes/assets/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+
+    <!--Perfect scrollbar init-->
+
+    <script src="~/showcase-grapes/assets/js/demo/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+    <!--FeatherIcons-->
+
+    <script src="~/showcase-grapes/assets/vendor/feather-icons/js/feather-icons.min.js"></script>
+
+    <!--FeatherIcons init-->
+
+    <script src="~/showcase-grapes/assets/js/demo/feather-icons/feather-icons.min.js"></script>
+
+
+    <!--Apexcharts-->
+
+    <script src="~/showcase-grapes/assets/js/bamburgh.min.js"></script>
+
+    <!--Slick slideshow-->
+
+    <script src="~/showcase-grapes/assets/vendor/slick/js/slick.min.js"></script>
+
+    <!--Slick slideshow init-->
+
+    <script src="~/showcase-grapes/assets/js/demo/slick/slick.min.js"></script>
+
+    <!--DataTables-->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/fixedheader/3.1.4/css/fixedHeader.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/keytable/2.5.0/css/keyTable.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/responsive/2.2.2/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/scroller/2.0.0/css/scroller.bootstrap4.min.css" />
+
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/keytable/2.5.0/js/dataTables.keyTable.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.2/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.2/js/responsive.bootstrap4.min.js"></script>
+
+    <!--Datatables init-->
+    <script src="~/showcase-grapes/assets/js/demo/datatables/datatables.min.js"></script>
+
+    <!--Notify init-->
+    <script type="text/javascript" src="~/showcase-grapes/assets/vendor/notify/js/notify.min.js"></script>
+
+
+    <script src="~/showcase-grapes/assembekov-grapes.min.js"></script>
+    <script src="~/showcase-grapes/config.js"></script>
+    <script src="~/showcase-grapes/assets/js/custom-grapesjs.js" charset="utf-8"></script>
+
+</body>
+</html>
